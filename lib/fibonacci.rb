@@ -5,8 +5,23 @@
 # ....
 # e.g. 6th fibonacci number is 8
 
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: O(n) where n is the input number
+# Space complexity: O(1) the number of variables is constant regardless of size of n
 def fibonacci(n)
-  raise NotImplementedError
+  fibonacci_num = 0
+  prior_num = 0
+  current_num = 1
+
+  if !n || n < 0
+    raise ArgumentError
+  elsif n == 0 || n == 1
+    return n
+  else 
+    (n-1).times do
+      fibonacci_num = prior_num + current_num
+      prior_num = current_num
+      current_num = fibonacci_num
+    end
+    return current_num
+  end
 end
